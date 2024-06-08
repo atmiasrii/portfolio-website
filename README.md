@@ -1,6 +1,6 @@
 # atmiasrivastava.com
 
-This is one of two repositories created for my portfolio website <a href="https://atmiasrivastava.com/"><samp>atmiasrivastava.com</samp></a>! Thanks for taking the time to check this out. If you have any questions of comments, feel free to shoot me an email at <samp><a href="mailto:atmiasrii@gmail.com">atmiasrii@gmail.com</a></samp>.
+This is the repositories created for my portfolio website <a href="https://atmiasrivastava.com/"><samp>atmiasrivastava.com</samp></a>! Thanks for taking the time to check this out. If you have any questions of comments, feel free to shoot me an email at <samp><a href="mailto:atmiasrii@gmail.com">atmiasrii@gmail.com</a></samp>.
 
 <br>
 
