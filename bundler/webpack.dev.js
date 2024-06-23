@@ -18,19 +18,17 @@ module.exports = merge(
         {
             level: 'warn',
         },
-        devServer:
-        {
+        devServer: {
             host: 'local-ip',
             port: portFinderSync.getPort(8080),
             open: true,
             https: false,
             allowedHosts: 'all',
             hot: false,
-            watchFiles: ['src/**', 'static/**'],
-            static:
-            {
+            watchFiles: ['src/**', 'static/**', '../../portfolio-inner-site/src/**', '../../portfolio-inner-site/static/**'], // Include innerportfolio
+            static: {
                 watch: true,
-                directory: path.join(__dirname, '../static')
+                directory: path.join(__dirname, '../static'),
             },
             client:
             {
@@ -51,3 +49,6 @@ module.exports = merge(
         }
     }
 )
+
+
+//
