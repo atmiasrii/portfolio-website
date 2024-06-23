@@ -4,25 +4,19 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
-    entry: {
-        main: path.resolve(__dirname, '../src/script.ts'),
-        inner: path.resolve(__dirname, '../../portfolio-inner-site/src/script.ts'), // Adjust the path if necessary
-    },
+    entry: path.resolve(__dirname, '../portfolio-inner-site/src/script.ts'),
     output: {
         hashFunction: 'xxhash64',
         filename: 'bundle.[contenthash].js',
-        path: path.resolve(__dirname, '../public'),
+        path: path.resolve(__dirname, '../portfolio-website/public'),
     },
     devtool: 'source-map',
     plugins: [
         new CopyWebpackPlugin({
-            patterns: [
-                { from: path.resolve(__dirname, '../static') },
-                { from: path.resolve(__dirname, '../../portfolio-inner-site/static'), to: 'inner/static' }, // Adjust the path if necessary
-            ],
+            patterns: [{ from: path.resolve(__dirname, '../portfolio-inner-site/static') }],
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../src/index.html'),
+            template: path.resolve(__dirname, '../portfolio-inner-site/src/index.html'),
             minify: true,
         }),
         new MiniCSSExtractPlugin(),
@@ -35,6 +29,7 @@ module.exports = {
     },
     module: {
         rules: [
+            // HTML
             {
                 test: /\.(html)$/,
                 use: ['html-loader'],
@@ -44,15 +39,18 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
+            // JS
             {
                 test: /\.tsx$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
             },
+            // CSS
             {
                 test: /\.css$/,
                 use: [MiniCSSExtractPlugin.loader, 'css-loader'],
             },
+            // Images
             {
                 test: /\.(jpg|png|gif|svg)$/,
                 type: 'asset/resource',
@@ -60,6 +58,7 @@ module.exports = {
                     filename: 'assets/images/[hash][ext]',
                 },
             },
+            // Audio
             {
                 test: /\.(mp3|wav)$/,
                 loader: 'file-loader',
@@ -67,6 +66,7 @@ module.exports = {
                     name: '[path][name].[ext]',
                 },
             },
+            // Fonts
             {
                 test: /\.(ttf|eot|woff|woff2)$/,
                 type: 'asset/resource',
@@ -74,6 +74,7 @@ module.exports = {
                     filename: 'assets/fonts/[hash][ext]',
                 },
             },
+            // Shaders
             {
                 test: /\.(glsl|vs|fs|vert|frag)$/,
                 exclude: /node_modules/,
